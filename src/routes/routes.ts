@@ -1,3 +1,4 @@
+import { StackNavigationOptions } from "@react-navigation/stack";
 import Login from "../containers/login/login";
 import Register from "../containers/register/register";
 import ROUTES from "./routeNames.enum";
@@ -5,7 +6,7 @@ import ROUTES from "./routeNames.enum";
 export type IRouteProps = {
   name: string;
   component: React.ComponentType<any>;
-  options?: { headerShown: boolean };
+  options?: StackNavigationOptions;
 };
 
 const routes: IRouteProps[] = [

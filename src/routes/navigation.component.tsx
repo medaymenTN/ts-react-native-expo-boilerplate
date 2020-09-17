@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { routes, initialRouteName, IRouteProps } from "./routes";
-import { Text } from "react-native";
+
 const Stack = createStackNavigator();
 const Navigation = () => {
   return (
