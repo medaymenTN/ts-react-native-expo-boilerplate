@@ -1,6 +1,6 @@
 import { StackNavigationOptions } from "@react-navigation/stack";
-import Login from "../containers/login/login";
-import Register from "../containers/register/register";
+import Login from "../containers/login/login.container";
+import Register from "../containers/register/register.container";
 import ROUTES from "./routeNames.enum";
 
 export type IRouteProps = {

@@ -33,8 +33,8 @@ const Register = () => {
             </Item>
           </View>
 
-          <Button full primary style={styles.button}>
-            <Text> Sign un </Text>
+          <Button rounded style={styles.button}>
+            <Text> Sign up </Text>
           </Button>
         </Form>
       </Content>

@@ -3,7 +3,9 @@ import { StyleSheet, Text, View } from "react-native";
 
 import Navigation from "./src/routes/navigation.component";
 import * as Font from "expo-font";
-
+import { Provider } from "react-redux";
+import store from "./src/store/store";
+import { Root } from "native-base";
 export default function App() {
   /** loading fonts */
   React.useEffect(() => {
@@ -15,9 +17,13 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Navigation />
-    </View>
+    <>
+      <Root>
+        <Provider store={store}>
+          <Navigation />
+        </Provider>
+      </Root>
+    </>
   );
 }
 

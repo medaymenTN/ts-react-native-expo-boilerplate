@@ -14,15 +14,26 @@ import {
   View,
 } from "native-base";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { StackNavigationProp, StackScreenProps } from "@react-navigation/stack";
 import ROUTES from "../../routes/routeNames.enum";
-
-type LoginScreenProps = StackScreenProps<any>;
+import { LoginDispatchProps, LoginScreenProps, LoginStateProps } from "./type";
+import {
+  connect,
+  MapDispatchToPropsParam,
+  MapStateToPropsParam,
+} from "react-redux";
+import { LoginAction } from "../../store/UserStore/user.async.action";
+import { Action, Dispatch } from "redux";
+import RootState from "../../store/types";
 
 const LoginScreen: React.FC<LoginScreenProps> = (props) => {
-  const { navigation } = props;
+  const [username, setUsername] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
 
-  const handleSignIn = () => {};
+  const { navigation, dispatchLogin } = props;
+
+  const handleSignIn = () => {
+    dispatchLogin(username, password);
+  };
 
   const handleNavigateToSignUp = () => {
     navigation.navigate(ROUTES.REGISTER);
@@ -45,7 +56,7 @@ const LoginScreen: React.FC<LoginScreenProps> = (props) => {
               <Input />
             </Item>
           </View>
-          <Button full primary style={styles.button}>
+          <Button rounded primary style={styles.button}>
             <Text> Sign in </Text>
           </Button>
           <TouchableOpacity onPress={handleNavigateToSignUp}>
@@ -59,4 +70,22 @@ const LoginScreen: React.FC<LoginScreenProps> = (props) => {
   );
 };
 
-export default LoginScreen;
+const mapDispatchToProps: MapDispatchToPropsParam<LoginDispatchProps, any> = (
+  dispatch: Dispatch<Action<any>>
+) => {
+  return {
+    dispatchLogin: (username: string, password: string) => {
+      return dispatch<any>(LoginAction(username, password));
+    },
+  };
+};
+
+const mapStateToProps: MapStateToPropsParam<LoginStateProps, {}, RootState> = (
+  state: RootState
+) => {
+  return {
+    loading: state.User.loading,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
