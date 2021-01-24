@@ -19,7 +19,7 @@ const userReducer = (
     case ACTION_TYPES.LOGIN_PENDING:
       return { ...state, loading: true };
     case ACTION_TYPES.LOGIN_SUCCESS:
-      return { ...state, loading: false, user: action.payload };
+      return { ...state, loading: false, user:action.payload};
     case ACTION_TYPES.LOGIN_PENDING:
       return { ...state, loading: false };
     default:
