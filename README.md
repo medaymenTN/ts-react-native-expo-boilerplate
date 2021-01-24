@@ -49,6 +49,6 @@ This should have the app running on your phone.
      |__services(xhr)
          |__UserService(example)
          |__endpoints.enum.ts
-         |__xgrConfig.ts
+         |__xhrConfig.ts
 
 ```
